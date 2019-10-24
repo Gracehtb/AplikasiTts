@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HalamanAdmin">
+
+    <ImageButton
+        android:id="@+id/dataDosen"
+        android:layout_width="132dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        android:onClick="DataDiri"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/datadiri" />
+
+    <ImageButton
+        android:id="@+id/dafDosen"
+        android:layout_width="115dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        android:onClick="DaftarDosen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/daftardosen" />
+
+    <ImageButton
+        android:id="@+id/dafMatkul"
+        android:layout_width="125dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        android:onClick="MataKuliah"
+        app:layout_constraintStart_toEndOf="@+id/dafDosen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/matakuliah" />
+
+    <ImageButton
+        android:id="@+id/kelolaKrs"
+        android:layout_width="130dp"
+        android:layout_height="123dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:scaleType="fitCenter"
+        android:onClick="KelolaKrs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataDosen"
+        app:srcCompat="@drawable/kelola" />
+
+    <ImageButton
+        android:id="@+id/dafMhs"
+        android:layout_width="113dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="48dp"
+        android:scaleType="fitCenter"
+        android:onClick="DaftarMhs"
+        app:layout_constraintStart_toEndOf="@+id/kelolaKrs"
+        app:layout_constraintTop_toBottomOf="@+id/dafDosen"
+        app:srcCompat="@drawable/datamhs" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
