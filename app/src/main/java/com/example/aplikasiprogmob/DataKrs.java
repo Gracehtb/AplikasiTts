@@ -63,10 +63,6 @@ public class DataKrs extends AppCompatActivity {
         if(item.getItemId()==R.id.item1) {
             Intent intent = new Intent(DataKrs.this,CrudKrs.class);
             startActivity(intent);
-        } if(item.getItemId()==R.id.item2) {
-            Toast.makeText(getApplicationContext(), "menu Update terpilih", Toast.LENGTH_SHORT).show();
-        } if (item.getItemId()==R.id.item3) {
-            Toast.makeText(getApplicationContext(), "menu Delete terpilih", Toast.LENGTH_SHORT).show();
         }
         return  true;
     }
