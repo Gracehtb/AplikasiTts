@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,9 +69,14 @@ public class HalamanAdmin extends AppCompatActivity {
                         })
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(HalamanAdmin.this, "Good Bye, Thank You !!", Toast.LENGTH_SHORT).show();
+                                SharedPreferences prefs = HalamanAdmin.this.getSharedPreferences("prefs_file",MODE_PRIVATE);
+                                String statusLogin = prefs.getString("isLogin",null);
+                                SharedPreferences.Editor edit = prefs.edit();
+                                edit.putString("isLogin", null);
+                                edit.commit();
                                 Intent intent = new Intent(HalamanAdmin.this, HalamanLogin.class);
                                 startActivity(intent);
+
                             }
                         });
 
