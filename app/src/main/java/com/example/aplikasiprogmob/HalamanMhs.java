@@ -64,9 +64,9 @@ public class HalamanMhs extends AppCompatActivity {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences prefs = HalamanMhs.this.getSharedPreferences("prefs_file",MODE_PRIVATE);
-                            String statusLogin = prefs.getString("isLogin",null);
+                            String statusSign = prefs.getString("isSign",null);
                             SharedPreferences.Editor edit = prefs.edit();
-                            edit.putString("isLogin", null);
+                            edit.putString("isSign", null);
                             edit.commit();
                             Intent intent = new Intent(HalamanMhs.this, HalamanLogin.class);
                             startActivity(intent);

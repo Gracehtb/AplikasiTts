@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbarSize="3dp">
+    android:scrollbarSize="3dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:scrollbarSize="3dp">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/dsnImage"
             android:layout_width="78dp"
             android:layout_height="81dp"
 

@@ -20,12 +20,12 @@ public class Halaman1 extends AppCompatActivity {
 
 
         SharedPreferences prefs = Halaman1.this.getSharedPreferences("prefs_file",MODE_PRIVATE);
-        String statusLogin = prefs.getString("isLogin",null);
-        if (statusLogin != null) {
-            if (statusLogin.equals("Admin")) {
+        String statusSign = prefs.getString("isSign",null);
+        if (statusSign != null) {
+            if (statusSign.equals("Admin")) {
                 Intent intent = new Intent(Halaman1.this, HalamanAdmin.class);
                 startActivity(intent);
-            } else if (statusLogin.equals("Mhs")) {
+            } else if (statusSign.equals("Mhs")) {
                 Intent intent = new Intent(Halaman1.this, HalamanMhs.class);
                 startActivity(intent);
             }

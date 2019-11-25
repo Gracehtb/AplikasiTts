@@ -57,7 +57,6 @@ public class HalamanAdmin extends AppCompatActivity {
     //item selected option
     @Override
     public  boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.item1) {
             if (item.getItemId() == R.id.item1) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(HalamanAdmin.this);
 
@@ -69,10 +68,10 @@ public class HalamanAdmin extends AppCompatActivity {
                         })
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                SharedPreferences prefs = HalamanAdmin.this.getSharedPreferences("prefs_file",MODE_PRIVATE);
-                                String statusLogin = prefs.getString("isLogin",null);
+                                SharedPreferences prefs = HalamanAdmin.this.getSharedPreferences("prefs_file", MODE_PRIVATE);
+                                String statusSign = prefs.getString("isSign", null);
                                 SharedPreferences.Editor edit = prefs.edit();
-                                edit.putString("isLogin", null);
+                                edit.putString("isSign", null);
                                 edit.commit();
                                 Intent intent = new Intent(HalamanAdmin.this, HalamanLogin.class);
                                 startActivity(intent);
@@ -82,7 +81,7 @@ public class HalamanAdmin extends AppCompatActivity {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            }
+            return true;
             };
-        } return true;
-    }
-}
+        }
