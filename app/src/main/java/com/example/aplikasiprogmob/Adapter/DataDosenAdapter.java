@@ -1,8 +1,7 @@
 package com.example.aplikasiprogmob.Adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasiprogmob.Model.DataDosen;
-import com.example.aplikasiprogmob.Model.DataMahasiswa;
 import com.example.aplikasiprogmob.R;
 import com.squareup.picasso.Picasso;
 
-import java.net.URL;
 import java.util.ArrayList;
 
 public class DataDosenAdapter extends RecyclerView.Adapter<DataDosenAdapter.ViewHolder> {
@@ -68,7 +65,10 @@ public class DataDosenAdapter extends RecyclerView.Adapter<DataDosenAdapter.View
         return (DaftarDosen !=null) ? DaftarDosen.size() : 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder
+    implements View.OnCreateContextMenuListener{
+        private TextView txtTitle, txtSubtitle;
+        private ImageView imgViewDosen;
         ImageView foto;
         TextView txtnidn;
         TextView txtnama;
@@ -80,11 +80,21 @@ public class DataDosenAdapter extends RecyclerView.Adapter<DataDosenAdapter.View
             super(view);
             foto = view.findViewById(R.id.dsnImage);
             txtnidn = view.findViewById(R.id.nidn);
-            txtnama = view.findViewById(R.id.namaDsn);
+            txtnama = view.findViewById(R.id.namadosen);
             txtgelar = view.findViewById(R.id.gelarDsn);
             txtemail = view.findViewById(R.id.emailDsn);
             txtalamat = view.findViewById(R.id.alamatDsn);
+            view.setOnCreateContextMenuListener(this);
 
+        }
+
+
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.setHeaderTitle("Pilih Aksi");
+            contextMenu.add(this.getAdapterPosition(), view.getId(), 0, "Ubah Data Dosen");
+            contextMenu.add(this.getAdapterPosition(), view.getId(), 0, "Hapus Data Dosen");
         }
     }
 }

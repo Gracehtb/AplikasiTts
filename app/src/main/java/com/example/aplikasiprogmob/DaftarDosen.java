@@ -1,5 +1,6 @@
 package com.example.aplikasiprogmob;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import  retrofit2.Callback;
 import retrofit2.Response;
+
+import com.example.aplikasiprogmob.Network.DefaultResult;
 import com.example.aplikasiprogmob.Network.GetDataService;
 import com.example.aplikasiprogmob.Network.RetrofitClientInstance;
 import android.app.ProgressDialog;
@@ -39,6 +42,8 @@ public class DaftarDosen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_dosen);
 
+        recyclerView = findViewById(R.id.rvDafDosen);
+
         //addData();
 
         progressDialog = new ProgressDialog(this);
@@ -52,7 +57,8 @@ public class DaftarDosen extends AppCompatActivity {
             public void onResponse(Call<ArrayList<DataDosen>> call, Response<ArrayList<DataDosen>> response) {
                 progressDialog.dismiss();
 
-                recyclerView = findViewById(R.id.rvDafDosen);
+
+                dataDosenArrayList = response.body();
                 dataDosenAdapter = new DataDosenAdapter(response.body());
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DaftarDosen.this);
                 recyclerView.setLayoutManager(layoutManager);
@@ -68,19 +74,62 @@ public class DaftarDosen extends AppCompatActivity {
         });
 
         this.setTitle("SI KRS - Hai Dosen");
+        registerForContextMenu(recyclerView);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        DataDosen dosen = dataDosenArrayList.get(item.getGroupId());
+        if(item.getTitle() == "Ubah Data Dosen"){
+            Intent intent = new Intent(DaftarDosen.this, CrudDosen.class);
+            intent.putExtra("nama_dosen",dosen.getNamadosen());
+            intent.putExtra("nidn",dosen.getNidn());
+            intent.putExtra("alamat",dosen.getAlamat());
+            intent.putExtra("email",dosen.getEmail());
+            intent.putExtra("gelar",dosen.getGelar());
+            intent.putExtra("foto",dosen.getFoto());
+            intent.putExtra("is_update",true);
+            startActivity(intent);
+        } else if(item.getTitle() == "Hapus Data Dosen"){
+            progressDialog = new ProgressDialog(DaftarDosen.this);
+            progressDialog.show();
+
+
+            GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
+            Call<DefaultResult> call = service.delete_dosen(dosen.getId(), "72170171");
+            call.enqueue(new Callback<DefaultResult>() {
+                @Override
+                public void onResponse(Call<DefaultResult> call, Response<DefaultResult> response) {
+                    progressDialog.dismiss();
+                    Toast.makeText(DaftarDosen.this, "Data Dihapus !!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DaftarDosen.this,HalamanAdmin.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+                @Override
+                public void onFailure(Call<DefaultResult> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(DaftarDosen.this, "Gagal, Coba Lagi",Toast.LENGTH_LONG).show();
+
+                }
+            });
+        }
+        return super.onContextItemSelected(item);
     }
 
     /*private void addData()
-    {
-        dataDosenArrayList = new ArrayList<>();
-        dataDosenArrayList.add(new DataDosen("1", "01020304", "Katon Wijana", "S.Kom, M.T.",
-                "katonw@sfatt.ukdw.ac.id", "Condongcatur", "logo.png"));
-        dataDosenArrayList.add(new DataDosen("2", "01020305", "Umi Proboyekti", "S.Kom, M.Sc",
-                "Umip@sfatt.ukdw.ac.id", "Kaliurang", "logo.png"));
-        dataDosenArrayList.add(new DataDosen("3", "01020306", "Yetli Oslan", "S.Kom, M.T.",
-                "yetlio@sfatt.ukdw.ac.id", "Gejayan", "logo.png"));
+        {
+            dataDosenArrayList = new ArrayList<>();
+            dataDosenArrayList.add(new DataDosen("1", "01020304", "Katon Wijana", "S.Kom, M.T.",
+                    "katonw@sfatt.ukdw.ac.id", "Condongcatur", "logo.png"));
+            dataDosenArrayList.add(new DataDosen("2", "01020305", "Umi Proboyekti", "S.Kom, M.Sc",
+                    "Umip@sfatt.ukdw.ac.id", "Kaliurang", "logo.png"));
+            dataDosenArrayList.add(new DataDosen("3", "01020306", "Yetli Oslan", "S.Kom, M.T.",
+                    "yetlio@sfatt.ukdw.ac.id", "Gejayan", "logo.png"));
 
-    }*/
+        }*/
         @Override
     public boolean onCreateOptionsMenu (Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -98,4 +147,5 @@ public class DaftarDosen extends AppCompatActivity {
         }
         return  true;
     }
+
 }
