@@ -18,7 +18,7 @@ public class HalamanLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_halaman_login);
-        email = findViewById(R.id.txtEmail);
+        email = findViewById(R.id.emailMhs);
 
         Button btnLogin = (Button) findViewById(R.id.btnSign);
         btnLogin.setOnClickListener(myBtnSignInClick);

@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.aplikasiprogmob.Model.DataMahasiswa;
 import com.example.aplikasiprogmob.Model.DataMatkul;
 import com.example.aplikasiprogmob.R;
 
@@ -54,7 +53,7 @@ public class DataMatkulAdapter extends RecyclerView.Adapter<DataMatkulAdapter.Vi
         public ViewHolder(View view) {
             super(view);
             txtkode = view.findViewById(R.id.txtKode);
-            txtnama = view.findViewById(R.id.txtNama);
+            txtnama = view.findViewById(R.id.editNama);
             txthari = view.findViewById(R.id.txtHari);
             txtsesi = view.findViewById(R.id.txtSesi);
             txtsks = view.findViewById(R.id.txtSks);

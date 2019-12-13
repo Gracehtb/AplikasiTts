@@ -1,7 +1,17 @@
 package com.example.aplikasiprogmob.Model;
 
-public class DataMahasiswa {
+import  com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+
+public class DataMahasiswa {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNim() {
         return nim;
@@ -11,40 +21,70 @@ public class DataMahasiswa {
         this.nim = nim;
     }
 
-    public String getNama() {
-        return nama;
+    public String getNamamhs() {
+        return namamhs;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setNamamhs(String namamhs) {
+        this.namamhs = namamhs;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailmhs() {
+        return emailmhs;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailmhs(String emailmhs) {
+        this.emailmhs = emailmhs;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public String getAlamatmhs() {
+        return alamatmhs;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setAlamatmhs(String alamatmhs) {
+        this.alamatmhs = alamatmhs;
     }
 
+    public String getFotomhs() {
+        return fotomhs;
+    }
+
+    public void setFotomhs(String fotomhs) {
+        this.fotomhs = fotomhs;
+    }
+
+    @SerializedName("id")
+    @Expose
+    private String id;
+
+    @SerializedName("nim")
+    @Expose
     private String nim;
-    private String nama;
-    private String email;
-    private String alamat;
+
+    @SerializedName("namamhs")
+    @Expose
+    private String namamhs;
+
+    @SerializedName("emailmhs")
+    @Expose
+    private String emailmhs;
+
+    @SerializedName("alamatmhs")
+    @Expose
+    private String alamatmhs;
+
+    @SerializedName("fotomhs")
+    @Expose
+    private String fotomhs;
 
 
-    public DataMahasiswa(String nim, String nama, String email, String alamat){
+
+    public DataMahasiswa(String id, String nim, String namamhs, String emailmhs, String alamatmhs, String fotomhs){
+        this.id = id;
         this.nim = nim;
-        this.nama = nama;
-        this.email = email;
-        this.alamat = alamat;
+        this.namamhs = namamhs;
+        this.emailmhs = emailmhs;
+        this.alamatmhs = alamatmhs;
+        this.fotomhs = fotomhs;
     }
 }

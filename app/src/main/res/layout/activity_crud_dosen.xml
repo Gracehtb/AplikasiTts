@@ -56,6 +56,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="156dp"
         android:ems="10"
+        android:theme="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textNidn"
         app:layout_constraintTop_toBottomOf="@+id/namadosen" />
@@ -150,9 +151,22 @@
         android:id="@+id/saveDosen"
         android:layout_width="284dp"
         android:layout_height="38dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="156dp"
         android:text="SIMPAN"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFoto" />
+
+    <ImageView
+        android:id="@+id/imageDosen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveDosen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>

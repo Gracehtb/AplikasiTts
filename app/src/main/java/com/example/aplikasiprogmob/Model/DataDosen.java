@@ -69,7 +69,7 @@ public class DataDosen {
     @Expose
     private String nidn;
 
-    @SerializedName("namaDosen")
+    @SerializedName("namadosen")
     @Expose
     private String namadosen;
 

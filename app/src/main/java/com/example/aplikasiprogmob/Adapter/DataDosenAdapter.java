@@ -49,11 +49,11 @@ public class DataDosenAdapter extends RecyclerView.Adapter<DataDosenAdapter.View
         holder.foto.getLayoutParams().height = 100;
         if(DaftarDosen.get(position).getFoto() !=null){
             Picasso.with(this.context)
-                    .load(DaftarDosen.get(position).getFoto())
+                    .load("https://kpsi.fti.ukdw.ac.id/progmob/" + DaftarDosen.get(position).getFoto())
                     .into(holder.foto);
         }
         holder.txtnidn.setText(DaftarDosen.get(position).getNidn());
-        holder.txtnama.setText(DaftarDosen.get(position).getNamadosen());
+        holder.txtnamadosen.setText(DaftarDosen.get(position).getNamadosen());
         holder.txtgelar.setText(DaftarDosen.get(position).getGelar());
         holder.txtemail.setText(DaftarDosen.get(position).getEmail());
         holder.txtalamat.setText(DaftarDosen.get(position).getAlamat());
@@ -71,7 +71,7 @@ public class DataDosenAdapter extends RecyclerView.Adapter<DataDosenAdapter.View
         private ImageView imgViewDosen;
         ImageView foto;
         TextView txtnidn;
-        TextView txtnama;
+        TextView txtnamadosen;
         TextView txtgelar;
         TextView txtemail;
         TextView txtalamat;
@@ -80,7 +80,7 @@ public class DataDosenAdapter extends RecyclerView.Adapter<DataDosenAdapter.View
             super(view);
             foto = view.findViewById(R.id.dsnImage);
             txtnidn = view.findViewById(R.id.nidn);
-            txtnama = view.findViewById(R.id.namadosen);
+            txtnamadosen = view.findViewById(R.id.namadosen);
             txtgelar = view.findViewById(R.id.gelarDsn);
             txtemail = view.findViewById(R.id.emailDsn);
             txtalamat = view.findViewById(R.id.alamatDsn);

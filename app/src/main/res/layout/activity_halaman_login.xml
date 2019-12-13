@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/awal" />
 
     <EditText
-        android:id="@+id/txtEmail"
+        android:id="@+id/emailMhs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -41,7 +41,7 @@
         android:inputType="textPassword"
         android:text="Password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/emailMhs" />
 
     <Button
         android:id="@+id/btnSign"

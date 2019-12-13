@@ -83,7 +83,7 @@ public class DaftarDosen extends AppCompatActivity {
         DataDosen dosen = dataDosenArrayList.get(item.getGroupId());
         if(item.getTitle() == "Ubah Data Dosen"){
             Intent intent = new Intent(DaftarDosen.this, CrudDosen.class);
-            intent.putExtra("nama_dosen",dosen.getNamadosen());
+            intent.putExtra("namadosen",dosen.getNamadosen());
             intent.putExtra("nidn",dosen.getNidn());
             intent.putExtra("alamat",dosen.getAlamat());
             intent.putExtra("email",dosen.getEmail());
